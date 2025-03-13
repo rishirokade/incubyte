@@ -8,8 +8,20 @@ function add(s) {
         return isNaN(number) ? 0 : number;
     });
 
+    // checking is containing negative
+    const negativeValueArray = numberArray.filter((num) => num < 0);
+    if (negativeValueArray.length > 0) {
+        throw "containing negative value" + " " + negativeValueArray.join(",");
+    }
+
     // create sum using reduced
     return numberArray.reduce((acc, curr) => acc + curr, 0);
 }
 
-add("1,5");
+console.log(add("1,5")); // 6
+
+try {
+    add("-1,-5");
+} catch (error) {
+    console.log(error); // 6
+}
