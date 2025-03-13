@@ -2,8 +2,10 @@ function add(s) {
     // checking empty string condition
     if (!s) return 0;
 
-    // split string by , and convert into number
-    const numberArray = s.split(",").map((value) => {
+    // handle new line condition and ,
+    const delimiter = /,|\n/;
+
+    const numberArray = s.split(delimiter).map((value) => {
         const number = Number(value);
         return isNaN(number) ? 0 : number;
     });
